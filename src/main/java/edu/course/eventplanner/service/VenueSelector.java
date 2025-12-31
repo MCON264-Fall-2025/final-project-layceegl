@@ -6,5 +6,17 @@ import java.util.*;
 public class VenueSelector {
     private final List<Venue> venues;
     public VenueSelector(List<Venue> venues) { this.venues = venues; }
-    public Venue selectVenue(double budget, int guestCount) { return null; }
+    public Venue selectVenue(double budget, int guestCount) {
+        List<Venue> valid = new ArrayList<>();
+        for (Venue v : venues) {
+            if (v.getCost() <= budget && v.getCapacity() >= guestCount) {
+                valid.add(v);
+            }
+        }
+        if (valid.isEmpty()) {
+            return null;
+        }
+        valid.sort(Comparator.comparingDouble(Venue::getCost).thenComparingInt(Venue::getCapacity));
+        return valid.getFirst();
+    }
 }

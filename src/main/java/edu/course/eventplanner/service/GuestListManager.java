@@ -8,7 +8,7 @@ public class GuestListManager {
     final LinkedList<Guest> guests = new LinkedList<>();
     final Map<String, Guest> guestByName = new HashMap<>();
 
-    public void addGuest(Guest guest) { /* TODO */
+    public void addGuest(Guest guest) {
         if (guest == null || guest.getName() == null) return;
         String name = guest.getName();
         if (guestByName.containsKey(name)) {
